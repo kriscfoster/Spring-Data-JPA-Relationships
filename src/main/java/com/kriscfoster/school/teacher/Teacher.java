@@ -1,9 +1,8 @@
 package com.kriscfoster.school.teacher;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.kriscfoster.school.subject.Subject;
+
+import javax.persistence.*;
 
 @Entity
 public class Teacher {
@@ -11,6 +10,9 @@ public class Teacher {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne(mappedBy = "teacher")
+    private Subject subject;
 
     private String name;
 

@@ -1,9 +1,11 @@
 package com.kriscfoster.school.student;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.kriscfoster.school.subject.Subject;
+
+import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Student {
@@ -13,6 +15,10 @@ public class Student {
     Long id;
 
     private String name;
+
+    @JsonIgnore
+    @ManyToMany(mappedBy = "enrolledStudents")
+    Set<Subject> subjects = new HashSet<>();
 
     public Long getId() {
         return id;
@@ -24,6 +30,10 @@ public class Student {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Subject> getSubjects() {
+        return subjects;
     }
 
 }

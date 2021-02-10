@@ -1,7 +1,5 @@
 package com.kriscfoster.school.student;
 
-import com.kriscfoster.school.teacher.Teacher;
-import com.kriscfoster.school.teacher.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
