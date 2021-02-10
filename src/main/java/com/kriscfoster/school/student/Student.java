@@ -18,7 +18,7 @@ public class Student {
 
     @JsonIgnore
     @ManyToMany(mappedBy = "enrolledStudents")
-    Set<Subject> subjects = new HashSet<>();
+    private Set<Subject> subjects = new HashSet<>();
 
     public Long getId() {
         return id;

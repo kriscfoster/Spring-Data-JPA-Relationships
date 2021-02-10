@@ -1,8 +1,10 @@
 package com.kriscfoster.school.teacher;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.kriscfoster.school.subject.Subject;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Teacher {
@@ -11,8 +13,9 @@ public class Teacher {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(mappedBy = "teacher")
-    private Subject subject;
+    @JsonIgnore
+    @OneToMany(mappedBy = "teacher")
+    private Set<Subject> subjects;
 
     private String name;
 
@@ -26,6 +29,10 @@ public class Teacher {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Subject> getSubjects() {
+        return this.subjects;
     }
 
 }
